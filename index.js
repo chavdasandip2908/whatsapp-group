@@ -91,10 +91,21 @@ async function createWhatsAppGroup(phoneNumbers) {
                 await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > div > div > div[role='button'] > div", { timeout: 60000 });
                 await page.click("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > div > div > div[role='button'] > div");
             } catch (e2) {
-
-                await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > span", { timeout: 60000 });
-                await page.type('#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x9desvi.x1gz9zih.xsag5q8.x1b9tyad.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x150wa6m > div > div > div.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1cy8zhl > input', "");
-
+                
+                try {
+                    // Check for the element that indicates the number is not registered
+                    // await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > span._ao3e", { timeout: 60000 });
+                    
+                    // Clear the input box
+                    await page.evaluate(() => {
+                        document.querySelector('#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x9desvi.x1gz9zih.xsag5q8.x1b9tyad.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x150wa6m > div > div > div.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1cy8zhl > input').value = '';
+                    });
+    
+                    console.log('Number is not registered, cleared input.');
+                } catch (er) {
+                    console.log(er);
+                    console.log("Error detected while checking registration status.");
+                }
             }
         }
         await delay(1000);
