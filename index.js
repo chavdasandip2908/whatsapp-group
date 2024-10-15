@@ -86,7 +86,7 @@ async function createWhatsAppGroup(phoneNumbers) {
         // await delay(1000);
         try {
 
-            await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div[role='button']", { timeout: 15000 });
+            await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div[role='button']", { timeout: 20000 });
             await page.click("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div[role='button']");
         } catch (e) {
             try {
