@@ -17,6 +17,7 @@ function extractPhoneNumbers(filePath) {
     // Assuming phone numbers are stored in a column named "Phone"
     const phoneNumbers = jsonData.map(row => row.Phone);
 
+
     return phoneNumbers;
 }
 
@@ -80,49 +81,48 @@ async function createWhatsAppGroup(phoneNumbers) {
 
     // Type each phone number into the search input and press Enter
     for (let phoneNumber of phoneNumbers) {
-        await page.waitForSelector('#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x9desvi.x1gz9zih.xsag5q8.x1b9tyad.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x150wa6m > div > div > div.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1cy8zhl > input', { timeout: 60000 });
+        await page.waitForSelector('#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x9desvi.x1gz9zih.xsag5q8.x1b9tyad.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x150wa6m > div > div > div.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1cy8zhl > input', { timeout: 3000 });
         await page.type('#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x9desvi.x1gz9zih.xsag5q8.x1b9tyad.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x150wa6m > div > div > div.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1cy8zhl > input', phoneNumber.toString());
-        await delay(1000);
+        // await delay(1000);
         try {
-            await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div[role='button']", { timeout: 60000 });
+            await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div[role='button']", { timeout: 10000 });
             await page.click("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div[role='button']");
         } catch (e) {
             try {
-                await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > div > div > div[role='button'] > div", { timeout: 60000 });
+                await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > div > div > div[role='button'] > div", { timeout: 7000 });
                 await page.click("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > div > div > div[role='button'] > div");
             } catch (e2) {
-                
-                try {
-                    // Check for the element that indicates the number is not registered
-                    // await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > span._ao3e", { timeout: 60000 });
-                    
-                    // Clear the input box
-                    await page.evaluate(() => {
-                        document.querySelector('#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x9desvi.x1gz9zih.xsag5q8.x1b9tyad.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x150wa6m > div > div > div.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1cy8zhl > input').value = '';
-                    });
-    
-                    console.log('Number is not registered, cleared input.');
-                } catch (er) {
-                    console.log(er);
-                    console.log("Error detected while checking registration status.");
-                }
+
+                // try {
+                //     // Check for the element that indicates the number is not registered
+                //     // await page.waitForSelector("#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x1n2onr6.x1n2onr6.x1iyjqo2.xs83m0k.x1r8uery.x6ikm8r.x1odjw0f.x150wa6m > div > div > span._ao3e", { timeout: 60000 });
+
+                //     // Clear the input box
+                await page.evaluate(() => {
+                    document.querySelector('#app > div > div.two._aigs > div._aigu > div._aohf._aigv._aigw._aigx > span > div > span > div > div > div.x9desvi.x1gz9zih.xsag5q8.x1b9tyad.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x150wa6m > div > div > div.x1c4vz4f.xs83m0k.xdl72j9.x1g77sc7.x78zum5.xozqiw3.x1oa3qoh.x12fk4p8.xeuugli.x2lwn1j.x1nhvcw1.x1q0g3np.x1cy8zhl > input').value = '';
+                });
+
+                console.log('Number is not registered, cleared input.');
+                // } catch (er) {
+                //     console.log(er);
+                //     console.log("Error detected while checking registration status.");
+                // }
             }
         }
-        await delay(1000);
-
+        // await delay(1000);
     }
 
     // Click the "Next" button after all numbers are entered
-    await page.waitForSelector('div[aria-label="Next"]', { timeout: 60000 });
-    await page.click('div[aria-label="Next"]');
+    // await page.waitForSelector('div[aria-label="Next"]', { timeout: 60000 });
+    // await page.click('div[aria-label="Next"]');
 
     // Enter a group name (you can customize the group name here)
     // await page.waitForSelector('input[placeholder="Group subject"]', { timeout: 60000 });
     // await page.type('input[placeholder="Group subject"]', 'My WhatsApp Group');
 
     // Click the "Create group" button
-    await page.waitForSelector('div[aria-label="Create group"]', { timeout: 60000 });
-    await page.click('div[aria-label="Create group"]');
+    // await page.waitForSelector('div[aria-label="Create group"]', { timeout: 60000 });
+    // await page.click('div[aria-label="Create group"]');
 
     console.log('WhatsApp group created successfully!');
     // await browser.close();
